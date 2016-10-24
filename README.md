@@ -21,10 +21,19 @@ It adds a simple mean to create an authorized_keys file inside a container.
 # Motivation
 
 I want a way to connect jconsole (a tool to monitor JVM memory profile and many other things)
-but I do not want to keep the JMX port inside the network.
+but I do want to keep the JMX port inside the network.
 
-A way to achieve this is to have an ssh dynamic tunnel to provided by a container in the network exposing port 22.
+A way to achieve this is to have a ssh dynamic tunnel provided by a container in the network exposing port 22.
 This way you can plug jconsole to any container in the network seamlessly via its net alias or docker DNS.
+
+## Prerequisite
+
+The JVM must be told to expose JMX, set the environment variable:
+```JAVA_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false```
+
+* [Docker CLI -e](https://docs.docker.com/engine/reference/run/#/env-environment-variables)
+* [Docker file ENV](https://docs.docker.com/engine/reference/builder/#/env)
+* [Docker compose file environment](https://docs.docker.com/compose/compose-file/#/environment)
 
 ## Example
 
