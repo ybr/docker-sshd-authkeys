@@ -16,7 +16,7 @@ It adds a simple mean to create an authorized_keys file inside a container.
 
 ## Inside a docker compose network
 
-```docker run -dt --name ssh-gtw -e "AUTHORIZED_KEYS=`cat ~/.ssh/id_rsa.pub`" -p 22 --net my_network ybrdx/sshd-authkeys```
+```docker run -dt --name ssh-gtw -e "AUTHORIZED_KEYS=`cat ~/.ssh/id_rsa.pub`" -P --net my_network ybrdx/sshd-authkeys```
 
 # Motivation
 
@@ -43,7 +43,7 @@ Retrieve its mapped port:
 ```docker port ssh-gtw```
 
 Create a dynamic tunnel:
-```ssh -ND 0.0.0.0:8157 -p MAPPED_PORT -i ~/.ssh/id_rsa root@127.0.0.1```
+```ssh -ND 127.0.0.1:8157 -p MAPPED_PORT -i ~/.ssh/id_rsa root@127.0.0.1```
 
 Launch jconsole:
 ```jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=8157 service:jmx:rmi:///jndi/rmi://my_service:1099/jmxrmi```
