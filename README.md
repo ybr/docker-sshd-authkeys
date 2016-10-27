@@ -8,15 +8,15 @@ It adds a simple mean to create an authorized_keys file inside a container.
 
 ## Your public key only in the authorization_keys
 
-```docker run -dt -e "AUTHORIZED_KEYS=`cat ~/.ssh/id_rsa.pub`" -P ybrdx/sshd-authkeys```
+```docker run -dtP -e "AUTHORIZED_KEYS=`cat ~/.ssh/id_rsa.pub`" ybrdx/sshd-authkeys```
 
 ## Use a sample authorized_keys in the container
 
-```docker run -dt -e "AUTHORIZED_KEYS=`cat ~/.ssh/authorized_keys`" -P ybrdx/sshd-authkeys```
+```docker run -dtO -e "AUTHORIZED_KEYS=`cat ~/.ssh/authorized_keys`" ybrdx/sshd-authkeys```
 
 ## Inside a docker compose network
 
-```docker run -dt --name ssh-gtw -e "AUTHORIZED_KEYS=`cat ~/.ssh/id_rsa.pub`" -P --net my_network ybrdx/sshd-authkeys```
+```docker run -dtP --name ssh-gtw -e "AUTHORIZED_KEYS=`cat ~/.ssh/id_rsa.pub`" --net my_network ybrdx/sshd-authkeys```
 
 # Motivation
 
