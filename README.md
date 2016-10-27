@@ -12,7 +12,7 @@ It adds a simple mean to create an authorized_keys file inside a container.
 
 ## Use a sample authorized_keys in the container
 
-```docker run -dtO -e "AUTHORIZED_KEYS=`cat ~/.ssh/authorized_keys`" ybrdx/sshd-authkeys```
+```docker run -dtP -e "AUTHORIZED_KEYS=`cat ~/.ssh/authorized_keys`" ybrdx/sshd-authkeys```
 
 ## Inside a docker compose network
 
