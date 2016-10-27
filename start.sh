@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -z $AUTHORIZED_KEYS ]; then
+if [ -z "$AUTHORIZED_KEYS" ]; then
   echo "You must provide the environment variable AUTHORIZED_KEYS"
   exit 1
 fi
